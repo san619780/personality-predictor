@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personality Predictor 🔮</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: rgba(255,255,255,0.1);
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+      font-size: 1.6rem;
+    }
+
+    label {
+      display: block;
+      margin: 1rem 0 0.5rem;
+      text-align: left;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    button {
+      background: #ffcc00;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.2s, background 0.2s;
+    }
+    button:hover {
+      transform: scale(1.05);
+      background: #ffdb4d;
+    }
+
+    .result {
+      margin-top: 1.5rem;
+      font-size: 1.3rem;
+      padding: 15px;
+      border-radius: 8px;
+      background: rgba(0,0,0,0.3);
+      display: none;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 2rem;   /* BIG FONT */
+      font-weight: bold;
+      text-align: center;
+      color: #ffcc00;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔮 Personality Predictor</h1>
+    <form id="predictForm">
+      <label for="name">Enter your name:</label>
+      <input type="text" id="name" required placeholder="e.g. Alex">
+
+      <label for="habit">Enter your habit:</label>
+      <input type="text" id="habit" required placeholder="e.g. Reading">
+
+      <button type="submit">Predict</button>
+    </form>
+
+    <div id="result" class="result"></div>
+  </div>
+
+  <footer>
+    🌟 Developed by <span style="color:#fff;">SaN</span>
+  </footer>
+
+  <script>
+    const form = document.getElementById("predictForm");
+    const resultBox = document.getElementById("result");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const habit = document.getElementById("habit").value.trim();
+
+      if (!name || !habit) {
+        resultBox.textContent = "⚠️ Please enter both name and habit.";
+        resultBox.style.display = "block";
+        return;
+      }
+
+      // Constant reply with name included
+      resultBox.innerHTML = `<strong>${name}</strong>, you are useless 😅`;
+      resultBox.style.display = "block";
+    });
+  </script>
+</body>
+</html>
